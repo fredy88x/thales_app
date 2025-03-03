@@ -104,3 +104,5 @@ bin/
 .vscode/
 
 frontend/node_modules/
+
+backend/gradle/
