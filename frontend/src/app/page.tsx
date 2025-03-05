@@ -5,7 +5,7 @@ import axios from "axios";
 interface Employee {
   id: number;
   employee_name: string;
-  employee_salary: number;
+  employee_year_salary: number;
   employee_age: number;
   profile_image: string;
 }
@@ -18,21 +18,20 @@ export default function Home() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     await axios
-      .get("http://dummy.restapiexample.com/api/v1/employee/1")
+      .get("/api/v1/employee/1")
       .then((response) => {
-        console.log(response.data);
         setEmployee(response.data);
       })
       .catch((error) => {
         console.error("Error getting employee:", error);
       });
 
-     if (employee === null) {
+     if (employee !== undefined && employee === null) {
        await axios
-         .get("http://dummy.restapiexample.com/api/v1/employees")
+         .get("/api/v1/employee")
          .then((response) => {
-           console.log(response.data);
            setEmployees(response.data);
+           console.log(employees);
          })
          .catch((error) => {
            console.error("Error getting employees:", error);
@@ -67,7 +66,7 @@ export default function Home() {
           </form>
         </div>
       </div>
-      <div className="card mt-4" hidden={hasContent}>
+      <div className="card mt-4">
         <div className="card-body">
           <table className="table table-striped">
             <thead>
@@ -80,11 +79,11 @@ export default function Home() {
               </tr>
             </thead>
             <tbody>
-              {employees.map((employee) => (
-                <tr key={employee.id}>
+              {employees && employees.length && employees.map((employee, index) => (
+                <tr key={index}>
                   <th scope="row">{employee.id}</th>
                   <td>{employee.employee_name}</td>
-                  <td>{employee.employee_salary}</td>
+                  <td>{employee.employee_year_salary}</td>
                   <td>{employee.employee_age}</td>
                   <td>{employee.profile_image}</td>
                 </tr>

@@ -1,13 +1,10 @@
 package com.thales.app.infraestructure.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-
-@Controller
+//@Controller
 public class FrontendController {
 
-  @GetMapping("/{path:^(?!api|static|js|css|img).*$}")
-  public String redirect() {
-    return "forward:/index.html";
-  }
+  //@GetMapping("/{path:^(?!api|static|js|css|img).*$}")
+  //public String redirect() {
+  //  return "forward:/static/index.html";
+  //}
 }

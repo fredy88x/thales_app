@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "export",
-  distDir: path.join(__dirname, "../backend/src/main/resources/static"), 
+  distDir: path.join("../backend/src/main/webapp/static"), 
 };
 
 export default nextConfig;
